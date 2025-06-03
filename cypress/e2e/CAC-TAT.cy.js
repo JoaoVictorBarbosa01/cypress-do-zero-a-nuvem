@@ -188,7 +188,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       })
   })  
 
-    it.only('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', () => {
+    it('seleciona um arquivo utilizando uma fixture para a qual foi dada um alias', () => {
     //ação realizada
     cy.fixture('example.json').as('sampleFile')//dando um alias para o arquivo example.json da pasta fixtures
 
@@ -202,8 +202,24 @@ describe('Central de Atendimento ao Cliente TAT', () => {
       })
     })
 
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
+      //ação realizada
+      cy.contains('a', 'Política de Privacidade') //selecionando o link Política de Privacidade e somente a tag 'a' generica 
+        .should('have.attr', 'href', 'privacy.html')//verificando se o link possui o atributo href com o valor privacy.html (se ele abre nessa pagina)
+        .and('have.attr', 'target', '_blank')//verificando se o link possui o atributo target com o valor _blank (se ele abre em outra aba)
 
-
+        //ou seja, aqui eu consigo verificar se o link abre em outra aba sem a necessidade de um clique de fato, pois o cypress não consegue interagir com abas diferentes da que está rodando o teste
+    })
+    
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', () => {
+      //ação realizada
+      cy.contains('a', 'Política de Privacidade') //selecionando o link Política de Privacidade e somente a tag 'a' generica 
+        .invoke('removeAttr', 'target')//removendo o atributo target do link para que ele possa ser aberto na mesma aba
+        .click()//clicando no link
+      //resultado esperado
+      cy.contains('h1', 'CAC TAT - Política de Privacidade')//verificando se o título da página é CAC TAT - Política de privacidade
+        .should('be.visible')//verificando se o título está visível
+    })
 })
 
 
