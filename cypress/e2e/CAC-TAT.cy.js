@@ -42,7 +42,7 @@ describe('Central de Atendimento ao Cliente TAT', () => {
     //resultado esperado
     cy.get('.error').should('be.visible')//verificando se a mensagem de erro está visível
   })
-  it ('campo telefone continua vazio quando preennchido com valor não-numerico', () => {
+  it ('campo telefone continua vazio quando preennchido com valor não numerico', () => {
     cy.get('#phone')
     .type('abcdefgh')
    
