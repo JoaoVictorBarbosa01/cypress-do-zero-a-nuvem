@@ -1,5 +1,3 @@
-const { beforeEach } = require("mocha")
-
 describe('Central de Atendimento ao Cliente TAT', () => {
   beforeEach(() => {
     cy.visit('./src/index.html')//visitando a aplicação
