@@ -1,3 +1,5 @@
+console.log ('Cypress - Do zero a nuvem')
+
 let isPhoneRequired = false
 
 const phoneLabelSpan = document.querySelector('.phone-label-span')
