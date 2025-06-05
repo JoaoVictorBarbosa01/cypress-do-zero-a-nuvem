@@ -1,4 +1,4 @@
-it('Testa a oagina de Policitica de privacidade', () => {
+it('Testa a Pagina de Policitica de privacidade', () => {
     cy.visit('./src/privacy.html')
 
     cy.contains('h1', 'CAC TAT - Política de Privacidade')//verificando se o título da página é CAC TAT - Política de privacidade
